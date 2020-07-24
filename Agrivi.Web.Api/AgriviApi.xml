@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Agrivi.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Agrivi.Web.Api.Controllers.ManufacturersController.GetManufacturersAsync(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Fetch a list of all manufacturers. Sort keys: "name, -name, website, -website"
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ManufacturersController.GetManufacturerByIdAsync(System.Int32)">
+            <summary>
+            Fetch a specific manufacturer
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ManufacturersController.CreateManufacturerAsync(Agrivi.Web.Models.Manufacturer.CarManufacturerCreate)">
+            <summary>
+            Creates a new manufacturer with provided data
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ManufacturersController.UpdateManufacturerAsync(Agrivi.Web.Models.Manufacturer.CarManufacturerDTO)">
+            <summary>
+            Updates an existing manufacturer using provided data
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ManufacturersController.DeleteManufacturerAsync(System.Int32)">
+            <summary>
+            Deletes specific manufacturer and all related car models
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.GetManufacturersAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Fetch a list of all models. Sort keys: "name, -name, year, -year"
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.GetCarModelByIdAsync(System.Int32)">
+            <summary>
+            Fetch a specific car model
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.CreateCarModelAsync(Agrivi.Web.Models.Model.CarModelCreate)">
+            <summary>
+            Create a new model
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.UpdateCarModelAsync(Agrivi.Web.Models.Model.CarModelDTO)">
+            <summary>
+            Update the existing model using provided data
+            </summary>
+        </member>
+        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.DeleteCarModelAsync(System.Int32)">
+            <summary>
+            Delete a specific model
+            </summary>
+        </member>
+    </members>
+</doc>
