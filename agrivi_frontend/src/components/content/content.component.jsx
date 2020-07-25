@@ -6,8 +6,8 @@ const Content = (props) => {
   return (
     <div className="content">
       <div className="content-display">
-        {props.manufacturers.map((x) => (
-          <ManufacturerCard manufacturer={x} key={x.id} />
+        {props.items.map((x) => (
+          <ManufacturerCard data={x} key={x.id} />
         ))}
       </div>
     </div>

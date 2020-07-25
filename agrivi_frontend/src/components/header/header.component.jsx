@@ -12,8 +12,12 @@ class Header extends Component {
   }
 
   handleChange = (e, { value }) => {
-    console.log(value);
     this.setState({ orderBy: value });
+    this.props.handleOrderingChange(value);
+  };
+
+  handleInputChange = (e, { value }) => {
+    this.props.handleInputChange(value);
   };
 
   render() {
@@ -55,9 +59,14 @@ class Header extends Component {
               <Input
                 className="input-txt"
                 placeholder="Search..."
-                onChange={this.handleChange}
+                onChange={this.handleInputChange}
               />
-              <Button icon labelPosition="right" className="button-filter">
+              <Button
+                icon
+                labelPosition="right"
+                className="button-filter"
+                onClick={this.props.loadItems}
+              >
                 Apply Filters
                 <Icon name="right arrow" />
               </Button>

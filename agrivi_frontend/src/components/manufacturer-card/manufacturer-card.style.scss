@@ -84,12 +84,12 @@
 
 .card-image {
   background-image: url("car.png");
-  background-size: 80%;
+  background-size: 50%;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 100px;
-  border-bottom: 1px solid grey;
+  border-bottom: 0.5px solid rgb(211, 211, 211);
 }
 
 .card-content {

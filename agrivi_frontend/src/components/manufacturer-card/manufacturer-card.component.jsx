@@ -6,8 +6,8 @@ const ManufacturerCard = (props) => {
     <div className="card">
       <div className="card-image"></div>
       <div className="card-content">
-        <h2>{props.manufacturer.name}</h2>
-        <h3>{props.manufacturer.website}</h3>
+        <h2>{props.data.name}</h2>
+        <h3>{props.data.website}</h3>
       </div>
     </div>
   );

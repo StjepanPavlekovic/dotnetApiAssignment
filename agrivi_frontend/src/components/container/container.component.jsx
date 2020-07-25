@@ -9,13 +9,29 @@ class Container extends Component {
 
     this.state = {
       search: "",
-      orderBy: "",
+      orderBy: "name",
       manufacturers: [],
     };
   }
-  componentDidMount() {
+
+  handleOrderingChange = (value) => {
+    console.log("Invoked with", value);
+    this.setState({
+      orderBy: value,
+    });
+  };
+
+  handleInputChange = (value) => {
+    this.setState({
+      search: value,
+    });
+  };
+
+  loadItems = () => {
     var context = this;
-    fetch("https://localhost:5001/api/manufacturers")
+    fetch(
+      `https://localhost:5001/api/manufacturers?orderBy=${this.state.orderBy}&name=${this.state.search}`
+    )
       .then(function (response) {
         return response.json();
       })
@@ -28,13 +44,21 @@ class Container extends Component {
       .then(function (data) {
         context.setState({ manufacturers: data.items });
       });
+  };
+
+  componentDidMount() {
+    this.loadItems();
   }
 
   render() {
     return (
       <div className="container">
-        <Header />
-        <Content manufacturers={this.state.manufacturers} />
+        <Header
+          handleOrderingChange={this.handleOrderingChange}
+          loadItems={this.loadItems}
+          handleInputChange={this.handleInputChange}
+        />
+        <Content items={this.state.manufacturers} />
       </div>
     );
   }

@@ -21,7 +21,7 @@ namespace Agrivi.Web.Api.Controllers
         /// Fetch a list of all models. Sort keys: "name, -name, year, -year"
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult<Page<CarModelDTO>>> GetManufacturersAsync(
+        public async Task<ActionResult<Page<CarModelDTO>>> GetCarModelsAsync(
             int pageNumber = Page.FIRST,
             int pageSize = Page.DEFAULT_SIZE,
             string orderBy = null,
