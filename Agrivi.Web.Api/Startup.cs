@@ -89,6 +89,8 @@ namespace Agrivi.Web.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Agrivi API");
             });
 
+            app.UseCors("CorsPolicy");
+
             //app.UseHttpsRedirection();
             app.UseMvc();
         }

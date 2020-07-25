@@ -1,0 +1,18 @@
+{
+  "pageNumber": 1,
+  "pageSize": 10,
+  "totalPages": 2,
+  "totalItems": 16,
+  "items": [
+    { "id": 1, "name": "Audi", "website": "https://www.audi.com/" },
+    { "id": 2, "name": "Suzuki", "website": "https://www.globalsuzuki.com/" },
+    { "id": 3, "name": "Opel", "website": "https://www.opel.com/" },
+    { "id": 4, "name": "Nissan", "website": "https://www.nissan-global.com/" },
+    { "id": 5, "name": "Lotus", "website": "https://www.lotuscars.com/" },
+    { "id": 6, "name": "Hyundai", "website": "https://www.hyundai.com/" },
+    { "id": 7, "name": "Honda", "website": "https://www.honda.com/" },
+    { "id": 8, "name": "Mazda", "website": "https://www.mazda.com/" },
+    { "id": 9, "name": "Dacia", "website": "https://www.dacia.hr/" },
+    { "id": 10, "name": "Dodge", "website": "https://www.dodge.com/" }
+  ]
+}

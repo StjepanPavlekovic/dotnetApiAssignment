@@ -17,7 +17,7 @@ namespace Agrivi.Web.Models.Common
     public static class Page
     {
         public const int FIRST = 1;
-        public const int DEFAULT_SIZE = 10;
+        public const int DEFAULT_SIZE = 8;
 
         public static Page<T> GetEmpty<T>(int pageSize = 0)
         {
