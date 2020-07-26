@@ -31,7 +31,7 @@ class Header extends Component {
         </div>
         <div className="filters-wrap">
           <div className="filters-title">
-            <h2>Filters:</h2>
+            <h2>Filter manufacturers:</h2>
             <div className="filters">
               <Form>
                 <Form.Field>Order by:</Form.Field>

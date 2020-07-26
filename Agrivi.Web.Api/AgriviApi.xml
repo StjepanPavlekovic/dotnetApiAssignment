@@ -29,7 +29,7 @@
             Deletes specific manufacturer and all related car models
             </summary>
         </member>
-        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.GetManufacturersAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int32})">
+        <member name="M:Agrivi.Web.Api.Controllers.ModelsController.GetCarModelsAsync(System.Int32,System.Int32,System.String,System.String,System.Nullable{System.Int32})">
             <summary>
             Fetch a list of all models. Sort keys: "name, -name, year, -year"
             </summary>

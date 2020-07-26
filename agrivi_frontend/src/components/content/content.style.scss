@@ -1,6 +1,7 @@
-.content {
+.content-container {
   width: 100%;
   height: 100vh;
+  overflow: scroll;
 }
 
 .content-display {
@@ -15,4 +16,26 @@
   grid-template-areas: ". . . ." ". . . .";
   justify-items: center;
   align-items: center;
+}
+
+.my-button {
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  display: block;
+  margin-top: 50px;
+  margin-left: 8%;
+  background-color: rgb(54, 71, 71);
+  color: whitesmoke;
+  font-family: "Poppins", sans-serif;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(67, 85, 85);
+  }
+}
+
+.display-none {
+  display: none;
 }
