@@ -1,13 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { Input, Dropdown } from "semantic-ui-react";
 import "./edit-model.style.scss";
 
-const EditModel = (props) => {
-  const [manufacturers, setManufacturers] = useState([]);
+class EditModel extends Component {
+  constructor(props) {
+    super(props);
 
-  var dropDownOptions = [];
+    this.state = {
+      manufacturers: [],
+      manufacturerId: null,
+      modelName: "",
+      currentManufacturer: null,
+    };
+  }
 
-  useEffect(() => {
+  dropDownOptions = [];
+
+  componentDidMount() {
     fetch("https://localhost:5001/api/manufacturers?pageSize=16")
       .then((response) => {
         return response.json();
@@ -19,50 +28,80 @@ const EditModel = (props) => {
         return JSON.parse(jsonString);
       })
       .then((data) => {
-        setManufacturers(data.items);
+        this.setState({
+          manufacturers: data.items.map((x) => ({
+            key: x.name,
+            text: x.name,
+            value: x.id,
+          })),
+          currentManufacturer: this.props.model.manufacturerId,
+          modelName: this.props.model.name,
+        });
       });
-  }, []);
+  }
 
-  dropDownOptions = manufacturers.map((x) => ({
-    key: x.name,
-    text: x.name,
-    value: x.id,
-  }));
+  handleDropdown = (event, { value }) => {
+    this.setState({
+      manufacturerId: value,
+    });
+  };
 
-  console.log(dropDownOptions);
+  handleInput = (e, { value }) => {
+    console.log(value);
+    this.setState({
+      modelName: value,
+      manufacturers: this.state.manufacturers,
+    });
+  };
 
-  var currentManufacturer = dropDownOptions.filter(
-    (x) => x.value === props.model.manufacturerId
-  );
+  doneEditing = () => {
+    if (
+      this.state.modelName !== "" ||
+      this.state.modelName != null ||
+      this.state.currentManufacturer !== this.state.manufacturerId
+    ) {
+      this.props.doneEditing(this.state.modelName, this.state.manufacturerId);
+    }
+  };
 
-  return (
-    <div className="background">
-      <div className="form-wrap">
-        <div className="edit-form">
-          <span className="labels">Edit name</span>
-          <Input placeholder={props.model.name} />
-          <span className="labels">Edit manufacturer</span>
-          <Dropdown
-            placeholder={
-              currentManufacturer.length > 0
-                ? currentManufacturer[0].text
-                : "Loading data..."
-            }
-            fluid
-            selection
-            options={dropDownOptions}
-          />
+  render() {
+    return (
+      <div className="background">
+        <div className="form-wrap">
+          <div className="edit-form">
+            <span className="labels">Edit name</span>
+            <Input
+              placeholder={this.props.model.name}
+              onChange={this.handleInput}
+            />
+            <span className="labels">Edit manufacturer</span>
+            <Dropdown
+              placeholder={
+                this.state.manufacturers.length > 0
+                  ? this.state.manufacturers.filter(
+                      (x) => x.value === this.state.currentManufacturer
+                    )[0].text
+                  : "Loading data..."
+              }
+              fluid
+              selection
+              options={this.state.manufacturers}
+              onChange={this.handleDropdown}
+            />
 
-          <div className="option-buttons">
-            <button className="my-button" onClick={props.endEditing}>
-              Cancle
-            </button>
-            <button className="my-button">Submit</button>
+            <div className="option-buttons">
+              <button className="my-button" onClick={this.props.stopEditing}>
+                Cancle
+              </button>
+              <button className="my-button" onClick={this.doneEditing}>
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default EditModel;

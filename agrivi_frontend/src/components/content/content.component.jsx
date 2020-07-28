@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import CarCard from "../car-card/car-card.component";
 import EditModel from "../edit-model/edit-model.component";
 import "./content.style.scss";
@@ -43,10 +44,40 @@ class Content extends Component {
     });
   };
 
-  endEditing = () => {
+  stopEditing = () => {
     this.setState({
       editing: !this.state.editing,
     });
+  };
+
+  doneEditing = (name, manufacturerId) => {
+    const carModel = {
+      Id: this.state.carModel.id,
+      Name: name,
+      Year: this.state.carModel.year,
+      ManufacturerId: manufacturerId,
+    };
+
+    console.log(carModel);
+
+    axios({
+      method: "put",
+      url: "https://localhost:5001/api/Models",
+      data: carModel,
+    })
+      .then(() => {
+        this.setState(
+          {
+            editing: !this.state.editing,
+          },
+          () => this.toggleEmpty()
+        );
+      })
+      .catch(() => {
+        window.alert(
+          "There was an error editing. Make sure the server is reachable!"
+        );
+      });
   };
 
   loadCars = (id) => {
@@ -88,7 +119,11 @@ class Content extends Component {
           </div>
         </div>
         {this.state.editing ? (
-          <EditModel endEditing={this.endEditing} model={this.state.carModel} />
+          <EditModel
+            stopEditing={this.stopEditing}
+            doneEditing={this.doneEditing}
+            model={this.state.carModel}
+          />
         ) : null}
         <div className={this.state.toggleModels ? "" : " display-none"}>
           <button className="my-button" onClick={this.toggleEmpty}>
